@@ -22,6 +22,12 @@ def index(request):
     category_list = Category.objects.order_by('-likes')[:5]
     context_dict = {'categories': category_list}
 
+    # Query the database for a list of ALL pages
+    # Order the pages by no. views in descending order
+    # Retrieve the top 5 only - or all if less than 5
+    # Place the list in our context_dict dictionary which will be passed to the template engine.
+    page_list = Page.objects.order_by('-views')[:5]
+    context_dict['pages'] = page_list
     # Render the response and send it back!
     return render(request, 'rango/index.html', context_dict)
 

@@ -1,13 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Rango</title>
-</head>
-<body>
+{% extends 'rango/base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Add a category{% endblock %}
+{% block body_block %}
+
 <h1>Add a Category</h1>
 
-<form id="category_form" method="post" action="/rango/add_category/">
+<form id="category_form" method="post" action="{% url 'add_category' %}">
     <!-- Cross-Site Request Forgery (CSRF) token,
      which helps to protect and secure the HTTP POST action
       that is initiated on the subsequent submission of a form.-->
@@ -24,5 +24,4 @@
 
     <input type="submit" name="submit" value="Create Category"/>
 </form>
-</body>
-</html>
+{% endblock %}

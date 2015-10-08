@@ -16,6 +16,7 @@ from rango.forms import CategoryForm, PageForm, UserForm, UserProfileForm
 #
 #     return render(request, 'rango/index.html', context_dict)
 
+
 def index(request):
     # Query the database for a list of ALL categories currently stored.
     # Order the categories by no. likes in descending order.
@@ -35,7 +36,7 @@ def index(request):
 
 
 def about(request):
-    return HttpResponse("Rango says here is the about page <a href='/rango/'>Index</a>")
+        return render(request, 'rango/about.html', {})
 
 
 def category(request, category_name_slug):
@@ -219,7 +220,7 @@ def user_login(request):
 
 @login_required
 def restricted(request):
-    return HttpResponse("Since you're logged in, you can see this text!")
+    return render(request, 'rango/restricted.html', {})
 
 
 # Use the login_required() decorator to ensure only those logged in can access the view.
